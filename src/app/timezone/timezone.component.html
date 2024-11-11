@@ -1,0 +1,107 @@
+<div class="grid grid-cols-2 gap-4">
+    <div>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Local Date Picker</mat-card-title>
+          <mat-card-subtitle>Timezone: {{ localTimeZone() }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <br />
+          <p>Local Date with angular pipe</p>
+          <mat-chip>{{ localDate() | date : "full" }}</mat-chip>
+          <br />
+          <br />
+          <p>Local Date with custom pipe</p>
+          <mat-chip>{{ localDate() | customDate : "full" }}</mat-chip>
+          <br />
+          <br />
+          <br />
+          <mat-divider />
+          <br />
+          <br />
+
+          <mat-form-field [floatLabel]="'always'">
+            <mat-label for="localDatePicker"> Local Date </mat-label>
+            <input
+              matInput
+              [matDatepicker]="localDatePicker"
+              [(ngModel)]="localDateTime"
+              name="localDate"
+              id="localDate"
+              placeholder="mm/dd/yyyy"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="localDatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #localDatePicker></mat-datepicker>
+          </mat-form-field>
+
+          <br />
+          <p>Original Datepicker Date</p>
+          <mat-chip>{{ localDateTime() }}</mat-chip>
+          <br />
+          <br />
+          <p>Datepicker Date with angular pipe</p>
+          <mat-chip>{{ localDateTime() | date : "full" }}</mat-chip>
+          <br />
+          <br />
+          <p>Datepicker Date with custom pipe</p>
+          <mat-chip>{{ localDateTime() | customDate : "full" }}</mat-chip>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div>
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Timezone Date Picker</mat-card-title>
+          <mat-card-subtitle>Timezone: {{ customTimezone() }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <br />
+          <p>Timezone Date with angular pipe</p>
+          <mat-chip>{{ customDate() | date : "full" }}</mat-chip>
+          <br />
+          <br />
+          <p>Timezone Date with custom pipe</p>
+          <mat-chip>{{ customDate() | customDate : "full" }}</mat-chip>
+
+          <br />
+          <br />
+          <br />
+          <mat-divider />
+          <br />
+          <br />
+
+          <mat-form-field [floatLabel]="'always'">
+            <mat-label for="timezoneDatePicker"> Timezone Date </mat-label>
+            <input
+              matInput
+              [matDatepicker]="timezoneDatePicker"
+              [(ngModel)]="customDateTime"
+              name="timezoneDate"
+              id="timezoneDate"
+              placeholder="mm/dd/yyyy"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="timezoneDatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #timezoneDatePicker></mat-datepicker>
+          </mat-form-field>
+
+          <br />
+          <p>Timezone Datepicker Date</p>
+          <mat-chip>{{ customDateTime() }}</mat-chip>
+          <br />
+          <br />
+          <p>Datepicker Date with angular pipe</p>
+          <mat-chip>{{ customDateTime() | date : "full" }}</mat-chip>
+          <br />
+          <br />
+          <p>Datepicker Date with custom pipe</p>
+          <mat-chip>{{ customDateTime() | customDate : "full" }}</mat-chip>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
