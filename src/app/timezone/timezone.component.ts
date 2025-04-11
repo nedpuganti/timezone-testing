@@ -19,7 +19,6 @@ import { TimezoneService } from '../timezone.service';
 
 @Component({
   selector: 'app-timezone',
-  standalone: true,
   imports: [
     CustomDatePipe,
     DatePipe,

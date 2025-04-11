@@ -1,8 +1,9 @@
 import {
-  APP_INITIALIZER,
   ApplicationConfig,
   importProvidersFrom,
   provideZoneChangeDetection,
+  inject,
+  provideAppInitializer,
 } from '@angular/core';
 import {
   MAT_MOMENT_DATE_ADAPTER_OPTIONS,
@@ -45,12 +46,10 @@ export const CalendarConfigServices = [
     useValue: { appearance: 'outlined' },
   },
   TimezoneService,
-  {
-    provide: APP_INITIALIZER,
-    useFactory: initializeTimezoneService,
-    deps: [TimezoneService],
-    multi: true,
-  },
+  provideAppInitializer(() => {
+    const initializerFn = initializeTimezoneService(inject(TimezoneService));
+    return initializerFn();
+  }),
   {
     provide: TIMEZONE_DATA,
     useFactory: (timezoneService: TimezoneService) => {
